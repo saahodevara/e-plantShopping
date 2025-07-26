@@ -251,8 +251,7 @@ function ProductList({ onHomeClick }) {
         setShowCart(false); // Hide the cart when navigating to About Us
     };
 
-    const handleContinueShopping = (e) => {
-        e.preventDefault();
+    const handleContinueShopping = () => {
         setShowCart(false);
     };
 
@@ -273,7 +272,11 @@ function ProductList({ onHomeClick }) {
     const calculateTotalQuantity = () => {
         return CartItems ? CartItems.reduce((total, item) => total + item.quantity, 0) : 0;
     };
-
+    useEffect(() => {
+  if (showCart) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}, [showCart]);
 
 
     return (
